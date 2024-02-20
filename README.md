@@ -1,1 +1,1 @@
-#Fertilizer-Recommendation-System-For-Paddy-Farmers
+# Fertilizer Recommendation System For Paddy Farmers
