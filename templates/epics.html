@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ఎరువుల సిఫార్సు వెబ్‌సైట్</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/epics.css">
+</head>
+
+<body>
+    <div class="main-div">
+            <div class="main-div-1">
+                <center>
+                <h1 class="eng"><img class="namaskaram" src="/static/img/namaskaram.png" alt="">Welcome to fertilizer recommendation website</h1>
+                <h1>ఎరువుల సిఫార్సు వెబ్‌సైట్‌కు స్వాగతం</h1>
+                <p class="col-lg-10 fs-4 eng">please select your field no according to government registration</p>
+                <p class="col-lg-10 fs-4 telugu">దయచేసి ప్రభుత్వ రిజిస్ట్రేషన్ ప్రకారం మీ ఫీల్డ్ నంబర్‌ను ఎంచుకోండి</p>
+            </center>
+            </div>
+            <div class="main-div-2">
+                <center>
+                <form id="Myform">
+                    <select id="dropdown">
+                        <option value="D-1">D-1</option>
+                        <option value="E-1">E-1</option>
+                        <option value="E-2">E-2</option>
+                        <option value="F-1">F-1</option>
+                        <option value="F-2">F-2</option>
+                        <option value="F-3">F-3</option>
+                        <option value="G-1">G-1</option>
+                        <option value="G-2">G-2</option>
+                    </select>
+                <button class="button-submit" type="submit" >Submit/సమర్పించండి</button>
+                </form>
+                <br>
+                <p id="result"></p>
+                <br>
+            </center>
+            </div>
+    </div>
+    <footer>
+      <center>
+      <p id="footer-note-1" class="eng"></p>
+      <p id="footer-note-2" class="telugu"></p>
+    </center>
+    </footer>
+  <script>
+    document.getElementById("Myform").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form submission behavior
+      sendParameter();
+    });
+    function sendParameter() {
+      var parameter = document.getElementById("dropdown").value;
+
+      fetch('/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ parameter: parameter }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = data.result;
+          if(data.result)
+          {
+            document.getElementById("footer-note-1").innerHTML = "*according to soil test report given by government in your area there is sufficient amount of phosphorus so no need of adding any extra fertilizers";
+            document.getElementById("footer-note-2").innerHTML = "ప్రభుత్వం ఇచ్చిన భూసార పరీక్ష నివేదిక ప్రకారం మీ ప్రాంతంలో తగినంత మొత్తంలో భాస్వరం ఉంది కాబట్టి అదనపు ఎరువులు వేయాల్సిన అవసరం లేదు";
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>
+
+</body>
+
+</html>

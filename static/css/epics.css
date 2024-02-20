@@ -1,0 +1,41 @@
+body {
+    background-image: url('/static/img/background-img.png'); /* Replace 'your-image.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  #dropdown{
+    display: block;
+    padding: 0.3em 5em;
+    margin: 1em;
+    border-radius: 10px;
+
+  }
+  .button-submit{
+    padding: 0.3em 1.5em;
+    border-radius: 10px;
+  }
+  .main-div{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-div-1{
+    margin: 5em 0em 0em 4em;
+  }
+  .main-div-2{
+    margin-bottom: 7em;
+    border-radius: 13px;
+    width: 60%;
+    background-color:  #BBD8F4;
+  }
+  p,h1,button,option{
+    font-weight: 900;
+  }
+  .namaskaram{
+    width: 50px;
+  }
+  .eng{
+    color: #BBD8F4;
+    text-shadow: 2px 0 black; 
+  }
